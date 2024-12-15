@@ -1,29 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import CourseList from "../components/CourseList";
-import "./HomePage.css";
+import React from "react";
 
 const HomePage = () => {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const container = containerRef.current;
-
-        // Toggle scrollability based on content height
-        if (container && container.scrollHeight > container.clientHeight) {
-            container.style.overflowY = "auto"; // Enable scrolling
-        } else if (container) {
-            container.style.overflowY = "hidden"; // Disable scrolling
-        }
-    }, []);
-
     return (
-        <div className="homepage-container" ref={containerRef}>
-            <h1 className="homepage-header">Courses</h1>
-            <div className="homepage-content">
-                <div className="course-list-wrapper">
-                    <CourseList />
-                </div>
-            </div>
+        <div>
+            <h1>Home Page</h1>
         </div>
     );
 };

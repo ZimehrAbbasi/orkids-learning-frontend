@@ -24,6 +24,10 @@ module.exports = {
                     "css-loader",   // Resolves @import and url() in CSS
                 ],
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource', // Webpack 5+ asset modules
+            },
         ],
     },
     resolve: {

@@ -1,46 +1,168 @@
-/* Navbar Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 .navbar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: transparent;
+    font-family: Arial, sans-serif;
+    margin-top: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar Container */
+.navbar-container {
+    width: 75%; /* Restrict the navbar to 75% of the screen */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
-    font-family: Arial, sans-serif;
 }
 
-.navbar-logo a {
-    font-size: 24px;
+/* Navbar Section */
+.navbar-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Left: Logo */
+.navbar-logo .logo-link {
+    font-size: 20px;
     font-weight: bold;
     text-decoration: none;
     color: black;
 }
 
-.navbar-links a {
-    font-size: 18px;
-    text-decoration: none;
-    color: #555;
-    margin-left: 20px;
+/* Middle: Collapsible Navigation Tabs */
+.navbar-tabs {
+    position: relative;
+    
 }
 
-.navbar-links a:hover {
-    color: black;
-    transition: 0.3s;
-}
-
-.navbar-links button {
-    background-color: transparent;
-    border: 1px solid rgb(99, 99, 99);
-    color: rgb(99, 99, 99);
-    padding: 8px 12px;
-    border-radius: 4px;
+.hamburger {
+    background: none;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    color: black;
 }
 
-.navbar-links button:hover {
+.tabs-dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
     background-color: white;
-    color: #007bff;
-    border-color: #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.tabs-dropdown.open {
+    display: flex;
+}
+
+.tab-link {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tab-link:hover {
+    color: #7d7d7d; /* Dark grey on hover */
+}
+
+/* Right: Auth/Profile */
+.navbar-auth {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Signup Link */
+.signup-link {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signup-link:hover {
+    background-color: #7d7d7d;
+    color: white;
+}
+
+/* Login Link */
+.login-link {
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login-link:hover {
+    color: #7d7d7d;
+}
+
+/* Profile Button */
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    transition: color 0.3s;
+    font-size: 18px;
+}
+
+.profile-button:hover {
+    color: #7d7d7d;
+}
+
+/* Logout Button */
+.logout-button {
+    margin-left: 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logout-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.logo-image {
+    height: 70px; /* Adjust size as needed */
+    width: auto;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .tabs-dropdown {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        box-shadow: none;
+        background: transparent;
+        gap: 30px;
+    }
+
+    .hamburger {
+        display: none;
+    }
 }

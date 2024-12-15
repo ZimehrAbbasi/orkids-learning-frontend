@@ -1,24 +1,24 @@
-/* HomePage.css */
+/* courselistpage.css */
 
-.homepage-container {
+.courselistpage-container {
     min-height: 100vh; /* Full height of the viewport */
     max-height: 100vh; /* Prevent unnecessary scrolling */
     overflow-y: hidden; /* Default: No scrolling */
-    background-color: #f9f9f9; /* Optional: Background color */
+    background-color: #ffffff; /* Optional: Background color */
     padding: 20px;
     display: flex;
     flex-direction: column; /* Stack header and content vertically */
     align-items: center; /* Center the header horizontally */
 }
 
-.homepage-header {
+.courselistpage-header {
     margin-bottom: 20px;
     font-size: 32px;
     color: #333;
     text-align: center;
 }
 
-.homepage-content {
+.courselistpage-content {
     width: 100%;
     max-width: 1200px; /* Restrict maximum width */
     display: flex; /* Flexbox for content layout */
