@@ -18,7 +18,7 @@ const HomePage = () => {
 
     return (
         <div className="homepage-container" ref={containerRef}>
-            <h1 className="homepage-header">Welcome to the Course Management System</h1>
+            <h1 className="homepage-header">Courses</h1>
             <div className="homepage-content">
                 <div className="course-list-wrapper">
                     <CourseList />

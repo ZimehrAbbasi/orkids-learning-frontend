@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"; // Navbar is now global
 import HomePage from "./pages/HomePage";
 import CoursePage from "./pages/CoursePage";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
 
 const App = () => {
     return (
@@ -12,6 +14,8 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/courses/:id" element={<CoursePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
                 </Routes>
             </div>
         </Router>

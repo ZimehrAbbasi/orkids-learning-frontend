@@ -2,21 +2,84 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./CoursePage.css";
+import { useAuth } from "../context/AuthContext";
 
 const CoursePage = () => {
-    const { id } = useParams();
+    const { id } = useParams(); // Course ID from URL
+    const { user, token } = useAuth(); // User token from AuthContext
     const [course, setCourse] = useState(null);
+    const [enrolled, setEnrolled] = useState(false); // Enrollment status
 
+    // Fetch course details
     useEffect(() => {
-        // Fetch course details from the backend
+        if (!token || !user) {
+            console.log("Token is not yet available");
+            return;
+        }
+
         axios
-            .get(`http://localhost:8080/api/courses/${id}`) // Adjust your endpoint
-            .then((response) => setCourse(response.data))
+            .post(`http://localhost:8080/protected/api/courses/${id}`,
+                { username: user.Username }, 
+                {
+                    headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                setEnrolled(response.data.enrolled)
+                setCourse(response.data.course)
+            })
             .catch((error) => console.error("Error fetching course:", error));
-    }, [id]);
+    }, [id, token]);
+
+    // Handle enroll action
+    const handleEnroll = async () => {
+        if (!user) {
+            console.log("User is not logged in");
+            return;
+        }
+        try {
+            const response = await axios.post(
+                `http://localhost:8080/protected/api/courses/enroll/${id}`,
+                { username: user.Username },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            console.log("Enrollment successful:", response.data);
+            setEnrolled(true);
+        } catch (error) {
+            console.error("Error enrolling in course:", error);
+        }
+    };
+
+    // Handle unenroll action
+    const handleUnenroll = async () => {
+        if (!user) {
+            console.log("User is not logged in");
+            return;
+        }
+        try {
+            const response = await axios.post(
+                `http://localhost:8080/protected/api/courses/unenroll/${id}`,
+                { username: user.Username },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            console.log("Unenrollment successful:", response.data);
+            setEnrolled(false);
+        } catch (error) {
+            console.error("Error unenrolling from course:", error);
+        }
+    }
 
     if (!course) {
-        return <p>Loading...</p>;
+        return <p>Please log in to view this course</p>;
     }
 
     return (
@@ -33,6 +96,15 @@ const CoursePage = () => {
                 <h2>Description</h2>
                 <p>{course.description}</p>
             </div>
+            {enrolled ? (
+                <button className="unenroll-button" onClick={handleUnenroll}>
+                    Unenroll
+                </button>
+            ) : (
+                <button className="enroll-button" onClick={handleEnroll}>
+                    Enroll
+                </button>
+            )}
             {course.relatedCourses?.length > 0 && (
                 <div className="related-courses">
                     <h2>Related Courses</h2>
