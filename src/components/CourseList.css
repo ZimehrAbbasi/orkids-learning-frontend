@@ -1,0 +1,71 @@
+/* CourseList.css */
+
+.course-list-container {
+    max-width: 1200px; /* Restrict the container width */
+    margin: 0 auto; /* Center the container */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect dimensions */
+}
+
+.course-list-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.course-list {
+    display: flex; /* Flexbox layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: flex-start; /* Align cards to the left */
+    gap: 20px; /* Space between cards */
+    margin: 0; /* Remove margin to avoid extra height */
+    padding: 0; /* Remove padding to prevent scroll issues */
+    box-sizing: border-box; /* Prevent overflow from padding */
+}
+
+.course-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 250px; /* Fixed width for all cards */
+    max-width: 100%; /* Ensures responsiveness */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h2 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    color: #333;
+    line-height: 1.2;
+}
+
+.course-card p {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 10px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.course-link {
+    font-size: 14px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.course-link:hover {
+    color: #0056b3;
+}

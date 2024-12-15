@@ -1,0 +1,29 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-logo a {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-links a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+}
+
+.navbar-links a:hover {
+    color: black;
+    transition: 0.3s;
+}
