@@ -17,11 +17,11 @@ const CoursePage = () => {
             console.log("Token is not yet available");
             return;
         }
-
+        console.log(token);
         axios
             .post(
-                `http://localhost:8080/protected/api/courses/${id}`,
-                { username: user.Username },
+                `http://localhost:8080/api/courses/${id}`,
+                { username: user.Username, checkEnrollment: true },
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -37,7 +37,7 @@ const CoursePage = () => {
     const handleEnroll = async () => {
         try {
             const response = await axios.post(
-                `http://localhost:8080/protected/api/courses/enroll/${id}`,
+                `http://localhost:8080/api/courses/enroll/${id}`,
                 { username: user.Username },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -54,7 +54,7 @@ const CoursePage = () => {
     const handleUnenroll = async () => {
         try {
             const response = await axios.post(
-                `http://localhost:8080/protected/api/courses/unenroll/${id}`,
+                `http://localhost:8080/api/courses/unenroll/${id}`,
                 { username: user.Username },
                 {
                     headers: { Authorization: `Bearer ${token}` },

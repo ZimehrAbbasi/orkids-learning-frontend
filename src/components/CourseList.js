@@ -7,8 +7,10 @@ const CourseList = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/courses")
-            .then((response) => setCourses(response.data))
+        axios.get("http://localhost:8080/api/public/courses")
+            .then((response) => {
+                setCourses(response.data.courses);
+            })
             .catch((error) => console.error("Error fetching courses:", error));
     }, []);
 

@@ -53,7 +53,7 @@ module.exports = {
     devServer: {
         static: path.join(__dirname, "dist"),
         compress: true,
-        port: 3000,
+        port: 3001,
         historyApiFallback: true, // For React Router to handle routes
     },
     mode: "development",
